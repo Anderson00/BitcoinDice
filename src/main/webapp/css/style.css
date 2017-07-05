@@ -1,0 +1,156 @@
+
+/*
+    Note: It is best to use a less version of this file ( see http://css2less.cc
+    For the media queries use @screen-sm-min instead of 768px.
+    For .omb_spanOr use @body-bg instead of white.
+*/
+
+body {
+    background-color:#eee;
+}
+
+@media (min-width: 768px) {
+    .omb_row-sm-offset-3 div:first-child[class*="col-"] {
+        margin-left: 25%;
+    }
+}
+
+.omb_login {
+    margin: 0 auto;
+    position: absolute;
+    left:50%;
+    top:50%;
+    background-color:#fff;
+    width:1000px;
+    margin: -206px 0 0 -500px;
+    box-shadow: 0px 0px 4px rgba(0,0,0,0.2);
+}
+
+.register {
+    display:none;
+}
+
+.register button {
+    margin-bottom:30px;
+}
+
+.omb_login .omb_authTitle {
+    text-align: center;
+	line-height: 300%;
+}
+	
+.omb_login .omb_socialButtons a {
+	color: white; // In yourUse @body-bg 
+	opacity:0.9;
+}
+.omb_login .omb_socialButtons a:hover {
+    color: white;
+	opacity:1;    	
+}
+.omb_login .omb_socialButtons .omb_btn-facebook {background: #3b5998;}
+.omb_login .omb_socialButtons .omb_btn-twitter {background: #00aced;}
+.omb_login .omb_socialButtons .omb_btn-google {background: #c32f10;}
+
+
+.omb_login .omb_loginOr {
+	position: relative;
+	font-size: 1.5em;
+	color: #aaa;
+	margin-top: 1em;
+	margin-bottom: 1em;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+}
+.omb_login .omb_loginOr .omb_hrOr {
+	background-color: #cdcdcd;
+	height: 1px;
+	margin-top: 0px !important;
+	margin-bottom: 0px !important;
+}
+.omb_login .omb_loginOr .omb_spanOr {
+	display: block;
+	position: absolute;
+	left: 50%;
+	top: -0.6em;
+	margin-left: -1.5em;
+	background-color: white;
+	width: 3em;
+	text-align: center;
+}			
+
+.omb_login .omb_loginForm .input-group.i {
+	width: 2em;
+}
+.omb_login .omb_loginForm  .help-block {
+    color: red;
+}
+
+	
+@media (min-width: 768px) {
+    .omb_login .omb_forgotPwd {
+        text-align: right;
+		margin-top:10px;
+ 	}		
+}
+
+.
+
+.bet-area {
+	padding:0px;
+}
+
+.btn-group-justified button {
+	border-radius:0;
+}
+
+.bet-area input {
+	border-radius:0px;
+	padding-top:20px;
+	padding-bottom:20px;
+}
+
+.amount {
+	background-color:#eee;
+}
+
+.bet-area .input-group2 {
+	padding:20px;
+}
+
+.bet-area .btn-lg {
+	margin-bottom:10px; 
+	border-radius:0px;
+	padding:20px 50px;
+	box-shadow:0 0 1px #000;
+}
+
+.chance-win{
+	background-color:#eee;
+	padding:10px;
+}
+
+.chance-win .box {
+	text-align:center;
+	font-size:18px;
+	font-weight: bold;
+}
+
+.chance-win label {
+	color:rgba(0,0,0,0.5);
+	font-size:16px;	
+}
+
+.chance-win .box .box-input {
+	display:none;
+}
+
+.chance-win .box input {
+	margin:auto;
+	width:100px;
+}
+
+.chance-win .roll-range {
+	background-color:#fff;
+	padding:10px 0;
+}
+
