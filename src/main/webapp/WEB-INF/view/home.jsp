@@ -1,3 +1,4 @@
+<%@page import="java.util.Collections"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Calendar"%>
 <%@page import="com.example.Spring.model.Task"%>
@@ -43,7 +44,7 @@
                                         <i class="fa fa-bank fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">${user.getBalanceBTC()}</div>
+                                        <div class="balance huge">${user.getBalanceBTC()}</div>
                                         <div>Balance</div>
                                     </div>
                                 </div>
@@ -65,7 +66,7 @@
                                         <i class="fa fa-btc fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">${user.getWithdrawBTC()}</div>
+                                        <div class="huge withD">${user.getWithdrawBTC()}</div>
                                         <div>Withdraw</div>
                                     </div>
                                 </div>
@@ -88,7 +89,7 @@
                                     </div>
                                     <div class="col-xs-9 text-right">
                                         <div class="huge">13</div>
-                                        <div>Support Tickets!</div>
+                                        <div>Number of bets</div>
                                     </div>
                                 </div>
                             </div>
@@ -119,20 +120,8 @@
                 <!-- /.row -->
 
                 <div class="row">
-                    <div class="col-lg-3">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h3 class="panel-title"><i class="fa fa-long-arrow-right fa-fw"></i> Donut Chart</h3>
-                            </div>
-                            <div class="panel-body">
-                                <div id="morris-donut-chart"></div>
-                                <div class="text-right">
-                                    <a href="#">View Details <i class="fa fa-arrow-circle-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
+                    
+                    <div class="col-lg-5">
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h3 class="panel-title"><i class="fa fa-clock-o fa-fw"></i> Tasks Panel</h3>
@@ -142,8 +131,10 @@
                                 	<% 
                                 		Usuario u = (Usuario) request.getAttribute("user"); 
                                 		ArrayList<Task> tasks = u.getTasks();  
+                                		Collections.reverse(tasks);
                                 		SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy HH:mm");
-                                		for(int i = (tasks.size()-1 > 7)? 7 : tasks.size()-1; i >= 0; i--){
+                                		int lngt = (tasks.size()-1 > 7)? 7 : tasks.size();
+                                		for(int i = 0; i < lngt; i++){
                                 			Task task = tasks.get(i);                                			
                                 	%>                                	
                                     <a href="#" class="list-group-item">
@@ -158,7 +149,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-5">
+                    <div class="col-lg-7">
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h3 class="panel-title"><i class="fa fa-money fa-fw"></i> Transactions Panel</h3>
@@ -174,55 +165,8 @@
                                                 <th>Amount (<i class="fa fa-btc fa-fw"></i>)</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>3326</td>
-                                                <td>10/21/2013</td>
-                                                <td>3:29 PM</td>
-                                                <td>$321.33</td>
-                                            </tr>
-                                            <tr>
-                                                <td>3325</td>
-                                                <td>10/21/2013</td>
-                                                <td>3:20 PM</td>
-                                                <td>$234.34</td>
-                                            </tr>
-                                            <tr>
-                                                <td>3324</td>
-                                                <td>10/21/2013</td>
-                                                <td>3:03 PM</td>
-                                                <td>$724.17</td>
-                                            </tr>
-                                            <tr>
-                                                <td>3323</td>
-                                                <td>10/21/2013</td>
-                                                <td>3:00 PM</td>
-                                                <td>$23.71</td>
-                                            </tr>
-                                            <tr>
-                                                <td>3322</td>
-                                                <td>10/21/2013</td>
-                                                <td>2:49 PM</td>
-                                                <td>$8345.23</td>
-                                            </tr>
-                                            <tr>
-                                                <td>3321</td>
-                                                <td>10/21/2013</td>
-                                                <td>2:23 PM</td>
-                                                <td>$245.12</td>
-                                            </tr>
-                                            <tr>
-                                                <td>3320</td>
-                                                <td>10/21/2013</td>
-                                                <td>2:15 PM</td>
-                                                <td>$5663.54</td>
-                                            </tr>
-                                            <tr>
-                                                <td>3319</td>
-                                                <td>10/21/2013</td>
-                                                <td>2:13 PM</td>
-                                                <td>$943.45</td>
-                                            </tr>
+                                        <tbody class="table-body">
+                                            
                                         </tbody>
                                     </table>
                                 </div>
@@ -245,6 +189,8 @@
     <!-- /#wrapper -->
     
     <jsp:include page="scripts.jsp"></jsp:include>
+    <script src="js/freebitcoin.js"></script>
+    <script src="js/home.js"></script>
     <script>
     document.getElementsByClassName("side-nav")[0].getElementsByTagName("li")[0].setAttribute("class","active");
     </script>

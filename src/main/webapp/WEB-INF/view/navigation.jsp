@@ -8,12 +8,12 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">SB Admin</a>
+                <a class="navbar-brand" href="index.html">DiceCoin</a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
                 <li>
-                    <a href="#"><i class="fa fa-btc" aria-hidden="true"></i> <span id="balance">${user.getBalanceBTC()}</span></b></a>
+                    <a href="#"><i class="fa fa-btc" aria-hidden="true"></i> <span class="balance">${user.getBalanceBTC()}</span></b></a>
                 </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> <b class="caret"></b></a>
@@ -130,14 +130,8 @@
                         <a href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-fw fa-btc"></i> Free BTC</a>
                     </li>
                     <li>
-                        <a href="tables.html"><i class="fa fa-fw fa-table"></i> Tables</a>
-                    </li>
-                    <li>
-                        <a href="bootstrap-elements.html"><i class="fa fa-fw fa-desktop"></i> Bootstrap Elements</a>
-                    </li>
-                    <li>
-                        <a href="bootstrap-grid.html"><i class="fa fa-fw fa-wrench"></i> Bootstrap Grid</a>
-                    </li>
+                        <a href="#" data-toggle="modal" data-target="#myModal2"><i class="fa fa-fw fa-btc"></i> Withdraw</a>
+                    </li>                     
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Dropdown <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo" class="collapse">
@@ -148,12 +142,6 @@
                                 <a href="#">Dropdown Item</a>
                             </li>
                         </ul>
-                    </li>
-                    <li>
-                        <a href="blank-page.html"><i class="fa fa-fw fa-file"></i> Blank Page</a>
-                    </li>
-                    <li>
-                        <a href="index-rtl.html"><i class="fa fa-fw fa-dashboard"></i> RTL Dashboard</a>
                     </li>
                 </ul>
             </div>
@@ -171,11 +159,39 @@
       </div>
       <div class="modal-body">
         <h2>Earn free bitcoins</h2>
+        <p style="color:green" class="ok"></p>
         <p style="color:red" class="error"></p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         <button type="button" class="earnBt btn btn-primary">Earn</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+        <!-- Modal Withdraw -->
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Free BTC</h4>
+      </div>
+      <div class="modal-body">
+        <h2>Withdraw</h2>
+		<form action="/withdraw">
+			<input class="form-control" type="Number" placeholder="amount" name="amount" value=0 />
+			<input class="form-control" type="text" placeholder="address" name="address" />
+		</form>
+		<p style="color:green" class="ok"></p>
+		<p style="color:red" class="error"></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="withdraw btn btn-primary">Earn</button>
       </div>
     </div>
   </div>

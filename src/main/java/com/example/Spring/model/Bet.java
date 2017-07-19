@@ -20,6 +20,7 @@ public class Bet {
 	@NotNull
 	private long userId;
 	private Date date;
+	private long balance;
 	@NotNull
 	private long amount;// Satoshi apostado
 	private boolean high;
@@ -77,6 +78,12 @@ public class Bet {
 	}
 	public long getBetID() {
 		return betID;
+	}
+	public long getBalance() {
+		return balance;
+	}
+	public void setBalance(long balance) {
+		this.balance = balance;
 	}
 	
 }

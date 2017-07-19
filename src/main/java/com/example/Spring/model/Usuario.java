@@ -25,7 +25,7 @@ public class Usuario {
 	private String email;
 	@NotNull
 	private String password;
-	private String mensagens;
+	private ArrayList<String> mensagens;
 	private ArrayList<Task> tasks;
 	
 	private long balance; // Satoshi
@@ -62,12 +62,12 @@ public class Usuario {
 		this.password = password;
 	}
 
-	public String getMensagens() {
+	public ArrayList<String> getMensagens() {
 		return mensagens;
 	}
 
-	public void setMensagens(String mensagens) {
-		this.mensagens = mensagens;
+	public void setMensagens(String mensagen) {
+		this.mensagens.add(mensagen);
 	}
 
 	public int getId() {
@@ -85,9 +85,13 @@ public class Usuario {
 	public ArrayList<Task> getTasks() {
 		return tasks;
 	}
-
-	public void setTasks(ArrayList<Task> tasks) {
+	
+	public void setTasks(ArrayList<Task> tasks){
 		this.tasks = tasks;
+	}
+
+	public void setTask(Task task) {
+		this.tasks.add(task);
 	}
 
 	public long getWithdraw() {

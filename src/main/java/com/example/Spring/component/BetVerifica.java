@@ -3,7 +3,10 @@ package com.example.Spring.component;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
+import java.util.List;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -64,6 +67,32 @@ public class BetVerifica {
 		return new BigDecimal((value*payout)-value).setScale(0, RoundingMode.DOWN).longValue();
 	}
 	
+	public List<Bet> findBets(BetsRepositories bets, int userID){
+		ArrayList<Bet> lista = new ArrayList<Bet>();
+		List<Bet> aux = bets.findAll();
+		for(Bet bet : aux){
+			if(bet.getUserId() == userID){
+				lista.add(bet);
+			}
+		}
+		
+		return lista;
+	}
+	
+	public List<Bet> findBets(BetsRepositories bets, int userID, int num){
+		List<Bet> aux = findBets(bets, userID);
+		List<Bet> lista = new ArrayList<Bet>();
+		Collections.reverse(aux);
+		if(num <= 0)
+			return null;
+		num = (num > aux.size())? aux.size() : num;
+		for(int i = 0; i < num; i++){
+			lista.add(aux.get(i));
+		}
+		
+		return lista;
+	}
+	
 	public String placeBet(BetsRepositories bets, UsersRepositories users, Usuario user,Bet bet){		
 		//BigDecimal d = new BigDecimal(value);
 		//d = d.setScale(2, RoundingMode.DOWN);
@@ -82,6 +111,7 @@ public class BetVerifica {
 		}
 		
 		bet.setUserId(user.getId());
+		bet.setBalance(user.getBalance()+profit);
 		bet.setChance(payoutToChance(bet.getPayout()));
 		bet.setRoll(random.setScale(2, RoundingMode.CEILING).toPlainString());
 		bet.setProfit(profit);
@@ -93,7 +123,7 @@ public class BetVerifica {
 		
 		bets.save(bet);
 		users.save(user);
-		return "{\"betID\":"+bet.getBetID()+",\"date\":\""+format.format(bet.getDate())+"\",\"amount\":"+bet.getAmount()+""
+		return "{\"betID\":"+bet.getBetID()+",\"balance\":"+bet.getBalance()+",\"date\":\""+format.format(bet.getDate())+"\",\"amount\":"+bet.getAmount()+""
 				+ ",\"payout\":\""+bet.getPayout()+"\""
 				+ ",\"chance\":\""+bet.getChance()+"\",\"roll\":\""+bet.getRoll()+"\",\"profit\":"+bet.getProfit()+"}";
 	}

@@ -1,10 +1,14 @@
 package com.example.Spring.controllers;
 
+import java.util.HashMap;
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -32,6 +36,20 @@ public class BetController {
 		int id = (int) session.getAttribute("userID");
 		model.addAttribute("user",users.findOne(id));
 		return "bet";
+	}
+	
+	@RequestMapping("/betinfo")
+	@ResponseBody
+	public List<Bet> betinfo(HttpSession session){
+		int id = (int) session.getAttribute("userID");				
+		return betVerifica.findBets(bets, id);
+	}
+	
+	@RequestMapping("/betinfo/{num}")// n apostas mais recentes
+	@ResponseBody
+	public List<Bet> betinfo(HttpSession session,@PathVariable("num") int num){
+		int id = (int) session.getAttribute("userID");				
+		return betVerifica.findBets(bets, id, num);
 	}
 	
 	@RequestMapping(value="/bet",method={RequestMethod.POST})
